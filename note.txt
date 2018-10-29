@@ -1,0 +1,16 @@
+如何引入css？
+
+需要安装：npm i -D style-loader css-loader
+
+css-loader：
+读取 CSS 文件
+
+style-loader：
+它的工作原理大概是把 CSS 内容用 JavaScript 里的字符串存储起来， 在网页执行 JavaScript 时通过 DOM 操作动态地往 HTML head 标签里插入 HTML style 标签
+
+想让 Webpack 单独输出 CSS 文件，通过 Webpack Plugin 机制来实现
+
+在入口文件引入css文件：
+import './css/main.css';
+// require('./css/main.css');
+

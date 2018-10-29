@@ -26,9 +26,18 @@ module.exports = {
         // 输出文件都放到 dist 目录下
         path: path.resolve(__dirname, './dist'),
     },
+    module: {
+        rules: [
+          {
+            // 用正则去匹配要用该 loader 转换的 CSS 文件
+            test: /\.css$/,
+            use: ['style-loader', 'css-loader?minimize'],
+          }
+        ]
+      },
     devServer: {
-        contentBase: './dist',
-        compress:true,          // 服务器压缩
+        contentBase: './dist',  //配置开发服务运行时的文件根目录
+        compress: true,          // 服务器压缩
         host: 'localhost',      // 默认是localhost
         port: 3000,             // 端口
         open: true,             // 自动打开浏览器
@@ -37,9 +46,10 @@ module.exports = {
     plugins: [
         // 热替换，热替换不是刷新
         new webpack.HotModuleReplacementPlugin()
+
     ],
-    module:{}, // 模块配置
-    mode:'development', // 可以更改模式
-    resolve:{}, // 配置解析
     
+    mode: 'development', // 可以更改模式
+    resolve: {}, // 配置解析
+
 };
