@@ -1,5 +1,4 @@
 如何引入css？
-
 需要安装：npm i -D style-loader css-loader
 
 css-loader：
@@ -13,4 +12,12 @@ style-loader：
 在入口文件引入css文件：
 import './css/main.css';
 // require('./css/main.css');
+
+把css单独分离出来？
+需要安装: npm i extract-text-webpack-plugin@next -D
+
+还不太明白的问题：
+热更新不会更新css,关闭热更新，页面会刷新，改变css会出现效果，但是dist下生成的css还是不会重新生成新的，需要自己手动build，我想要热更新时也自动生成改变后的css，该如何？ 
+
+
 
