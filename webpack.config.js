@@ -1,6 +1,8 @@
 const path = require('path');
 let webpack = require('webpack');
 
+// 拆分css样式的插件
+let ExtractTextWebpackPlugin = require('extract-text-webpack-plugin');
 
 /*
 
@@ -31,7 +33,10 @@ module.exports = {
           {
             // 用正则去匹配要用该 loader 转换的 CSS 文件
             test: /\.css$/,
-            use: ['style-loader', 'css-loader?minimize'],
+            use: ExtractTextWebpackPlugin.extract({
+                // 将css用link的方式引入就不再需要style-loader了
+                use: 'css-loader'       
+            })
           }
         ]
       },
@@ -41,11 +46,14 @@ module.exports = {
         host: 'localhost',      // 默认是localhost
         port: 3000,             // 端口
         open: true,             // 自动打开浏览器
-        hot: true               // 开启热更新
+        hot: false               // 开启热更新
     },
     plugins: [
         // 热替换，热替换不是刷新
-        new webpack.HotModuleReplacementPlugin()
+        new webpack.HotModuleReplacementPlugin(),
+        // 拆分后会把css文件放到dist目录下的css/style.css
+        new ExtractTextWebpackPlugin('css/style.css'),
+        
 
     ],
     
