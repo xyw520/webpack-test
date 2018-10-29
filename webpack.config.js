@@ -53,7 +53,6 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         // 拆分后会把css文件放到dist目录下的css/style.css
         new ExtractTextWebpackPlugin('css/style.css'),
-        
 
     ],
     
