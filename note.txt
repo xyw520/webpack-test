@@ -36,7 +36,8 @@ DevServer 会把 Webpack 构建出的文件保存在内存中，在要访问输�
 
  调试工具可以通过 Source Map 映射代码，让你在源代码上断点调试。 Webpack 支持生成 Source Map，只需在启动时带上 --devtool source-map 参数。
 
-222
 
+还不太明白的问题：
+增加对scss的处理后，可以生成相应的css文件，但是DevServer 自动刷新无效。
 
 

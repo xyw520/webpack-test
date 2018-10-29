@@ -30,14 +30,25 @@ module.exports = {
     },
     module: {
         rules: [
+        //   {
+        //     // 用正则去匹配要用该 loader 转换的 CSS 文件
+        //     test: /\.css$/,
+        //     use: ExtractTextWebpackPlugin.extract({
+        //         // 将css用link的方式引入就不再需要style-loader了
+        //         use: 'css-loader'       
+        //     })
+        //   },
           {
-            // 用正则去匹配要用该 loader 转换的 CSS 文件
-            test: /\.css$/,
-            use: ExtractTextWebpackPlugin.extract({
-                // 将css用link的方式引入就不再需要style-loader了
-                use: 'css-loader'       
-            })
-          }
+            // 增加对 SCSS 文件的支持
+            test: /\.scss/,
+            // use: ExtractTextWebpackPlugin.extract({
+            //     // 将css用link的方式引入就不再需要style-loader了
+            //     use: ['css-loader', 'sass-loader'],      
+            // })
+            // // SCSS 文件的处理顺序为先 sass-loader 再 css-loader 再 style-loader
+            use: ['style-loader', 'css-loader', 'sass-loader'],
+          },
+
         ]
       },
     devServer: {
@@ -49,10 +60,11 @@ module.exports = {
         hot: false               // 开启热更新
     },
     plugins: [
-        // 热替换，热替换不是刷新
-        new webpack.HotModuleReplacementPlugin(),
+        
         // 拆分后会把css文件放到dist目录下的css/style.css
         new ExtractTextWebpackPlugin('css/style.css'),
+        // 热替换，热替换不是刷新
+        new webpack.HotModuleReplacementPlugin(),
 
     ],
     
