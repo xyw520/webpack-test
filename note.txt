@@ -1,3 +1,15 @@
+学习参考
+http://webpack.wuhaolin.cn
+
+https://blog.csdn.net/sinat_17775997/article/details/80318569
+
+https://www.cnblogs.com/cangqinglang/p/8964460.html
+
+
+
+
+
+
 如何引入css？
 需要安装：npm i -D style-loader css-loader
 
@@ -18,6 +30,11 @@ import './css/main.css';
 
 还不太明白的问题：
 热更新不会更新css,关闭热更新，页面会刷新，改变css会出现效果，但是dist下生成的css还是不会重新生成新的，需要自己手动build，我想要热更新时也自动生成改变后的css，该如何？ 
+
+可能的解释：
+DevServer 会把 Webpack 构建出的文件保存在内存中，在要访问输出的文件时，必须通过 HTTP 服务访问。 DevServer 不会理会 webpack.config.js 里配置的 output.path 属性
+
+ 调试工具可以通过 Source Map 映射代码，让你在源代码上断点调试。 Webpack 支持生成 Source Map，只需在启动时带上 --devtool source-map 参数。
 
 
 
